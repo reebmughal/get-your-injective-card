@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Get your Injective card</title>
+<meta name="description" content="Type your X username and get your own one-of-one Injective card with rarity, role and power.">
+<meta name="theme-color" content="#07070b">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://get-your-injective-card.netlify.app/">
+<meta property="og:title" content="Get your Injective card">
+<meta property="og:description" content="Type your X username and get your own one-of-one Injective card.">
+<meta property="og:image" content="https://get-your-injective-card.netlify.app/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Get your Injective card">
+<meta name="twitter:description" content="Type your X username and get your own one-of-one Injective card.">
+<meta name="twitter:image" content="https://get-your-injective-card.netlify.app/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07070b;--fg:#f5f5f8;--mut:#8b8b98;--line:#1c1c26;--vi:#7b6dff;
+  --rx:0deg;--ry:0deg;--gx:50%;--gy:30%;--hx:50%;--hy:50%;--flip:180deg;
+  --h1:#ff4fcf;--h2:#ffc94f;--h3:#4fffae;--h4:#4fcfff;--h5:#9f4fff;
+  --cw:340px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{background:var(--bg);color:var(--fg);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{min-height:100vh;overflow-x:hidden}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-weight:500;text-transform:uppercase;letter-spacing:.2em}
+.glow{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(40% 45% at 72% 48%,rgba(110,96,255,.20),transparent 70%),radial-gradient(35% 35% at 15% 10%,rgba(110,96,255,.07),transparent 70%)}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px);background-size:22px 22px;
+  -webkit-mask-image:radial-gradient(60% 60% at 70% 50%,#000,transparent)}
+header{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;max-width:1180px;margin:0 auto;padding:28px 32px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:17px;letter-spacing:-.01em}
+.brand svg{width:24px;height:24px;fill:#fff}
+.brand em{font-style:normal;color:var(--mut);font-weight:500}
+.credit{font-size:13px;color:var(--mut);text-decoration:none;transition:color .2s}
+.credit:hover{color:#fff}
+main{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:24px 32px 40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:center;min-height:calc(100vh - 160px)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:11px;color:#c9c5ff;padding:8px 14px;border:1px solid #26243d;border-radius:99px;background:rgba(123,109,255,.06)}
+.eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--vi);box-shadow:0 0 10px var(--vi);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+h1{margin-top:26px;font-weight:600;font-size:clamp(40px,5.4vw,68px);line-height:1.02;letter-spacing:-.045em}
+h1 span{background:linear-gradient(90deg,#fff 0%,#c3bdff 40%,#ff9be3 70%,#9be7ff 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 6s ease-in-out infinite alternate}
+@keyframes shift{to{background-position:100% 0}}
+.lead{margin-top:20px;max-width:440px;font-size:17px;line-height:1.55;color:var(--mut)}
+form{margin-top:34px;display:flex;align-items:center;gap:8px;max-width:460px;padding:7px 7px 7px 20px;border:1px solid #262633;border-radius:16px;background:rgba(255,255,255,.025);transition:border-color .2s,box-shadow .2s}
+form:focus-within{border-color:#4a43a8;box-shadow:0 0 0 4px rgba(123,109,255,.12)}
+form .at{color:var(--mut);font-size:18px;font-weight:500}
+form input{flex:1;min-width:0;width:0;background:none;border:0;outline:0;color:#fff;font:500 18px Inter,sans-serif;padding:12px 0}
+form input::placeholder{color:#55555f}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 22px;border:0;border-radius:11px;background:#fff;color:#0a0a10;font:600 15px Inter,sans-serif;cursor:pointer;overflow:hidden;white-space:nowrap;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.btn:after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(123,109,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .6s}
+.btn:hover:after{transform:translateX(120%)}
+.btn[disabled]{opacity:.7;cursor:wait}
+.alt{margin-top:14px;font-size:13px;color:#5f5f6b}
+.alt label{color:#b4b0ff;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.msg{margin-top:12px;min-height:18px;font-size:13px;color:#f5b54a}
+.actions{margin-top:26px;display:flex;flex-wrap:wrap;gap:10px;opacity:0;transform:translateY(8px);pointer-events:none;transition:all .5s .3s}
+.actions.on{opacity:1;transform:none;pointer-events:auto}
+.ghost{height:46px;padding:0 18px;border-radius:11px;border:1px solid #2a2a36;background:rgba(255,255,255,.03);color:#fff;font:500 14px Inter,sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .2s,border-color .2s}
+.ghost:hover{background:rgba(255,255,255,.07);border-color:#3a3a4a}
+.ghost svg{width:16px;height:16px}
+.solid{background:#fff;color:#0a0a10;border-color:#fff}
+.solid:hover{background:#e9e8ff;border-color:#e9e8ff}
+
+/* ---------- card ---------- */
+.right{display:flex;flex-direction:column;align-items:center}
+.scene{position:relative;width:calc(var(--cw) + 120px);height:calc(var(--cw)*1.4 + 120px);display:flex;align-items:center;justify-content:center;perspective:1400px;touch-action:pan-y}
+.float{animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+.card{position:relative;width:var(--cw);height:calc(var(--cw)*1.4);transform-style:preserve-3d;transform:rotateX(var(--rx)) rotateY(calc(var(--ry) + var(--flip)));transition:transform .08s linear}
+.card.flipping{transition:transform 1.25s cubic-bezier(.2,.9,.25,1.12)}
+.face{position:absolute;inset:0;border-radius:calc(var(--cw)*.075);overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden;box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.10)}
+.face>*{position:absolute;inset:0}
+.front .lat{opacity:.22}
+.back{transform:rotateY(180deg);background:linear-gradient(160deg,#17142f,#0b0a14 55%,#15122e)}
+.front{background:linear-gradient(165deg,#1a1735 0%,#0c0b16 48%,#141130 100%)}
+.lat{-webkit-mask-image:repeating-linear-gradient(45deg,#000 0 1px,transparent 1px 8px),repeating-linear-gradient(-45deg,#000 0 1px,transparent 1px 8px);
+  background:linear-gradient(115deg,var(--h1),var(--h2),var(--h3),var(--h4),var(--h5),var(--h1),var(--h2));background-size:400% 400%;background-position:var(--hx) var(--hy);mix-blend-mode:color-dodge;opacity:.42}
+.frame{inset:calc(var(--cw)*.04);border-radius:calc(var(--cw)*.045);border:1px solid rgba(255,255,255,.12)}
+.holo-fill{background:linear-gradient(115deg,var(--h1) 0%,var(--h2) 16%,var(--h3) 32%,var(--h4) 48%,var(--h5) 64%,var(--h1) 80%,var(--h2) 100%);background-size:300% 300%;background-position:var(--hx) var(--hy)}
+.mark{-webkit-mask-repeat:no-repeat;-webkit-mask-position:center;-webkit-mask-size:contain;mask-repeat:no-repeat;mask-position:center;mask-size:contain}
+.bigmark{inset:auto;left:50%;top:7%;width:94%;aspect-ratio:1;transform:translateX(-50%);opacity:.13}
+.backmark{inset:auto;left:50%;top:50%;width:56%;aspect-ratio:1;transform:translate(-50%,-56%);filter:drop-shadow(0 0 24px rgba(160,150,255,.5))}
+.backmark .silver{position:absolute;inset:0;background:linear-gradient(160deg,#d8d6ee 0%,#7d7aa6 30%,#e4e2f6 52%,#6f6c98 76%,#c9c7e4 100%);background-size:220% 220%;background-position:var(--hx) var(--hy)}
+.backmark .tint{position:absolute;inset:0;mix-blend-mode:color;opacity:.9}
+.backmark .tint2{position:absolute;inset:0;mix-blend-mode:overlay;opacity:.55}
+.btxt{inset:auto;left:0;right:0;bottom:16%;text-align:center}
+.btxt b{display:block;font-weight:600;font-size:calc(var(--cw)*.075);letter-spacing:-.02em}
+.btxt span{display:block;margin-top:8px;font-size:calc(var(--cw)*.03);color:rgba(255,255,255,.5)}
+.corner{inset:auto;font-size:calc(var(--cw)*.03);color:rgba(255,255,255,.55);display:flex;align-items:center;gap:6px}
+.corner svg{width:calc(var(--cw)*.045);height:calc(var(--cw)*.045);fill:#fff}
+.c-tl{left:8%;top:6.2%}.c-tr{right:8%;top:6.2%}.c-bl{left:8%;bottom:5.6%}.c-br{right:8%;bottom:5.6%}
+.ava{inset:auto;left:50%;top:15%;width:46%;aspect-ratio:1;transform:translateX(-50%)}
+.ring{position:absolute;inset:-7%;border-radius:50%;background:conic-gradient(from var(--ang,0deg),var(--h1),var(--h2),var(--h3),var(--h4),var(--h5),var(--h1));filter:saturate(1.2);box-shadow:0 0 30px rgba(140,125,255,.45)}
+.ring:after{content:"";position:absolute;inset:5%;border-radius:50%;background:#0c0b16}
+.ava img,.ava .init{position:absolute;inset:0;width:100%;height:100%;border-radius:50%;object-fit:cover;background:#15132a}
+.ava .init{display:flex;align-items:center;justify-content:center;font-weight:600;font-size:calc(var(--cw)*.16);background:linear-gradient(140deg,#3b2f9e,#15132a)}
+.uname{inset:auto;left:6%;right:6%;top:55.5%;text-align:center;font-weight:600;font-size:calc(var(--cw)*.083);letter-spacing:-.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rar{inset:auto;left:50%;top:65%;transform:translateX(-50%);padding:calc(var(--cw)*.014) calc(var(--cw)*.035);border-radius:99px;font-size:calc(var(--cw)*.029);white-space:nowrap;color:#0a0a10;font-weight:600}
+.stats{inset:auto;left:8%;right:8%;top:74%;display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.10);border-bottom:1px solid rgba(255,255,255,.10)}
+.stats div{padding:calc(var(--cw)*.03) 0;text-align:center}
+.stats div+div{border-left:1px solid rgba(255,255,255,.10)}
+.stats small{display:block;font-size:calc(var(--cw)*.026);color:rgba(255,255,255,.58)}
+.stats b{display:block;margin-top:calc(var(--cw)*.014);font-family:Inter,sans-serif;text-transform:none;font-weight:600;font-size:calc(var(--cw)*.048);letter-spacing:-.015em;white-space:nowrap}
+.sheen{background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.08) 46%,rgba(255,255,255,.22) 50%,rgba(255,255,255,.08) 54%,transparent 65%);background-size:300% 300%;background-position:calc(100% - var(--hx)) 50%;mix-blend-mode:screen}
+.glare{background:radial-gradient(circle at var(--gx) var(--gy),rgba(255,255,255,.32),rgba(255,255,255,.07) 28%,transparent 55%);mix-blend-mode:soft-light}
+.shadow{position:absolute;left:50%;bottom:14px;width:calc(var(--cw)*.8);height:34px;margin-left:calc(var(--cw)*-.4);border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.8),transparent);filter:blur(4px)}
+.hint{margin-top:4px;font-size:11px;color:#55555f}
+.burst{position:absolute;left:50%;top:50%;width:0;height:0;pointer-events:none;z-index:5}
+.burst i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 8px #fff,0 0 14px var(--c);animation:fly 1.1s cubic-bezier(.15,.7,.3,1) forwards}
+@keyframes fly{from{transform:translate(0,0) scale(1);opacity:1}to{transform:translate(var(--dx),var(--dy)) scale(.2);opacity:0}}
+footer{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:0 32px 30px;display:flex;justify-content:space-between;font-size:12px;color:#4d4d58}
+footer a{color:#7a7a88;text-decoration:none}
+footer a:hover{color:#fff}
+@media (max-width:900px){
+  main{grid-template-columns:minmax(0,1fr);gap:10px;padding-top:4px;min-height:0}
+  .left,.right{min-width:0}
+  .right{order:-1}
+  :root{--cw:min(300px,72vw)}
+  .scene{width:100%;height:calc(var(--cw)*1.4 + 70px)}
+  h1{margin-top:18px}
+  .left{text-align:left}
+  header{padding:20px}
+  main,footer{padding-left:20px;padding-right:20px}
+}
+@media (max-width:420px){form{padding-left:14px}.btn{padding:0 16px}}
+@media (prefers-reduced-motion:reduce){.float,h1 span,.eyebrow i{animation:none}}
+</style>
+</head>
+<body>
+<div class="glow"></div><div class="grain"></div>
+<header>
+  <div class="brand"><svg viewBox="0 0 48 48"><path d="M29.04 0.572266L28.896 0.860266C33.888 3.02027 36.72 7.48427 36.72 12.3803C36.72 17.6603 33.264 22.4603 26.544 26.5403L25.44 27.2123C20.4 30.2843 17.856 33.7403 17.856 37.9163C17.856 43.2923 22.08 47.2283 27.888 47.2283C37.2 47.2283 48 37.2923 48 24.0443C48 21.8843 47.712 19.7723 47.184 17.7563L46.848 17.8523C46.992 18.9563 47.04 19.7723 47.04 20.5403C47.04 28.3643 42.624 35.0843 35.232 39.5483L34.512 39.9803C32.928 40.8923 31.584 41.4203 30.24 41.4203C28.464 41.4203 27.12 40.2683 27.12 38.5883C27.12 37.1483 28.08 35.7083 31.2 33.8843L32.112 33.3563C39.024 29.3243 42.864 23.6603 42.864 17.3723C42.864 9.40427 36.912 2.82827 29.04 0.572266ZM18.96 47.4683L19.104 47.1803C14.112 45.0203 11.28 40.5563 11.28 35.6603C11.28 30.3803 14.736 25.5803 21.456 21.5003L22.56 20.8283C27.6 17.7563 30.144 14.3003 30.144 10.1243C30.144 4.74827 25.92 0.812266 20.112 0.812266C10.8 0.812266 0 10.7483 0 23.9963C0 26.1563 0.288 28.2683 0.816 30.2843L1.152 30.1883C1.008 29.0843 0.96 28.2683 0.96 27.5003C0.96 19.6763 5.376 12.9563 12.768 8.49227L13.488 8.06027C15.072 7.14827 16.416 6.62027 17.76 6.62027C19.536 6.62027 20.88 7.77227 20.88 9.45227C20.88 10.8923 19.92 12.3323 16.8 14.1563L15.888 14.6843C8.976 18.7163 5.136 24.3803 5.136 30.6683C5.136 38.6363 11.088 45.2123 18.96 47.4683Z"/></svg>Injective <em>Card</em></div>
+  <a class="credit" href="https://x.com/reebmughal" target="_blank" rel="noopener">by @reebmughal</a>
+</header>
+
+<main>
+  <section class="left">
+    <div class="eyebrow mono"><i></i>Edition · 2026</div>
+    <h1>Get your<br><span>Injective card.</span></h1>
+    <p class="lead">Type your X username. We pull your profile picture and print your own one-of-one Injective card with your rarity, role and power.</p>
+    <form id="f" autocomplete="off">
+      <span class="at">@</span>
+      <input id="u" name="u" placeholder="username" maxlength="16" spellcheck="false" aria-label="X username">
+      <button class="btn" id="go" type="submit">Create card <span aria-hidden="true">→</span></button>
+    </form>
+    <div class="alt">or <label>upload your own photo<input id="file" type="file" accept="image/*" hidden></label></div>
+    <div class="msg" id="msg"></div>
+    <div class="actions" id="actions">
+      <button class="ghost solid" id="dl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>Download PNG</button>
+      <button class="ghost" id="share"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.2L2 3h6.33l4.37 5.77L17.75 3zm-1.08 16.2h1.7L7.4 4.73H5.58L16.67 19.2z"/></svg>Share on X</button>
+      <button class="ghost" id="again">New card</button>
+    </div>
+  </section>
+
+  <section class="right">
+    <div class="scene" id="scene">
+      <div class="shadow" id="shadow"></div>
+      <div class="float">
+        <div class="card" id="card">
+          <!-- back -->
+          <div class="face back">
+            <div class="lat"></div>
+            <div class="frame"></div>
+            <div class="corner c-tl mono">INJ</div><div class="corner c-tr mono">Card</div>
+            <div class="backmark"><div class="mark" id="bm" style="position:absolute;inset:0"><div class="silver"></div><div class="tint holo-fill"></div><div class="tint2 holo-fill"></div></div></div>
+            <div class="btxt"><b>Injective</b><span class="mono">Built for finance</span></div>
+            <div class="corner c-bl mono">Edition</div><div class="corner c-br mono">2026</div>
+            <div class="sheen"></div><div class="glare"></div>
+          </div>
+          <!-- front -->
+          <div class="face front" id="front">
+            <div class="lat"></div>
+            <div class="bigmark mark holo-fill" id="bg"></div>
+            <div class="frame"></div>
+            <div class="corner c-tl mono"><svg viewBox="0 0 48 48"><path d="M29.04 0.572266L28.896 0.860266C33.888 3.02027 36.72 7.48427 36.72 12.3803C36.72 17.6603 33.264 22.4603 26.544 26.5403L25.44 27.2123C20.4 30.2843 17.856 33.7403 17.856 37.9163C17.856 43.2923 22.08 47.2283 27.888 47.2283C37.2 47.2283 48 37.2923 48 24.0443C48 21.8843 47.712 19.7723 47.184 17.7563L46.848 17.8523C46.992 18.9563 47.04 19.7723 47.04 20.5403C47.04 28.3643 42.624 35.0843 35.232 39.5483L34.512 39.9803C32.928 40.8923 31.584 41.4203 30.24 41.4203C28.464 41.4203 27.12 40.2683 27.12 38.5883C27.12 37.1483 28.08 35.7083 31.2 33.8843L32.112 33.3563C39.024 29.3243 42.864 23.6603 42.864 17.3723C42.864 9.40427 36.912 2.82827 29.04 0.572266ZM18.96 47.4683L19.104 47.1803C14.112 45.0203 11.28 40.5563 11.28 35.6603C11.28 30.3803 14.736 25.5803 21.456 21.5003L22.56 20.8283C27.6 17.7563 30.144 14.3003 30.144 10.1243C30.144 4.74827 25.92 0.812266 20.112 0.812266C10.8 0.812266 0 10.7483 0 23.9963C0 26.1563 0.288 28.2683 0.816 30.2843L1.152 30.1883C1.008 29.0843 0.96 28.2683 0.96 27.5003C0.96 19.6763 5.376 12.9563 12.768 8.49227L13.488 8.06027C15.072 7.14827 16.416 6.62027 17.76 6.62027C19.536 6.62027 20.88 7.77227 20.88 9.45227C20.88 10.8923 19.92 12.3323 16.8 14.1563L15.888 14.6843C8.976 18.7163 5.136 24.3803 5.136 30.6683C5.136 38.6363 11.088 45.2123 18.96 47.4683Z"/></svg>Injective</div>
+            <div class="corner c-tr mono" id="no">№ 0000</div>
+            <div class="ava"><div class="ring"></div><div class="init" id="init">?</div><img id="pfp" alt="" hidden></div>
+            <div class="uname" id="name">@username</div>
+            <div class="rar mono holo-fill" id="rar">◆ Rare</div>
+            <div class="stats mono">
+              <div><small>Role</small><b id="role">Builder</b></div>
+              <div><small>Power</small><b id="pow">0000</b></div>
+              <div><small>Class</small><b id="cls">Ninja</b></div>
+            </div>
+            <div class="corner c-bl mono">Built for finance</div><div class="corner c-br mono">2026</div>
+            <div class="sheen"></div><div class="glare"></div>
+          </div>
+        </div>
+      </div>
+      <div class="burst" id="burst"></div>
+    </div>
+    <div class="hint mono">Move or drag to tilt</div>
+  </section>
+</main>
+
+<footer><span>Injective Card</span><a href="https://x.com/reebmughal" target="_blank" rel="noopener">Made by @reebmughal</a></footer>
+
+<canvas id="cv" width="1080" height="1350" hidden></canvas>
+<script>
+const INJD='M29.04 0.572266L28.896 0.860266C33.888 3.02027 36.72 7.48427 36.72 12.3803C36.72 17.6603 33.264 22.4603 26.544 26.5403L25.44 27.2123C20.4 30.2843 17.856 33.7403 17.856 37.9163C17.856 43.2923 22.08 47.2283 27.888 47.2283C37.2 47.2283 48 37.2923 48 24.0443C48 21.8843 47.712 19.7723 47.184 17.7563L46.848 17.8523C46.992 18.9563 47.04 19.7723 47.04 20.5403C47.04 28.3643 42.624 35.0843 35.232 39.5483L34.512 39.9803C32.928 40.8923 31.584 41.4203 30.24 41.4203C28.464 41.4203 27.12 40.2683 27.12 38.5883C27.12 37.1483 28.08 35.7083 31.2 33.8843L32.112 33.3563C39.024 29.3243 42.864 23.6603 42.864 17.3723C42.864 9.40427 36.912 2.82827 29.04 0.572266ZM18.96 47.4683L19.104 47.1803C14.112 45.0203 11.28 40.5563 11.28 35.6603C11.28 30.3803 14.736 25.5803 21.456 21.5003L22.56 20.8283C27.6 17.7563 30.144 14.3003 30.144 10.1243C30.144 4.74827 25.92 0.812266 20.112 0.812266C10.8 0.812266 0 10.7483 0 23.9963C0 26.1563 0.288 28.2683 0.816 30.2843L1.152 30.1883C1.008 29.0843 0.96 28.2683 0.96 27.5003C0.96 19.6763 5.376 12.9563 12.768 8.49227L13.488 8.06027C15.072 7.14827 16.416 6.62027 17.76 6.62027C19.536 6.62027 20.88 7.77227 20.88 9.45227C20.88 10.8923 19.92 12.3323 16.8 14.1563L15.888 14.6843C8.976 18.7163 5.136 24.3803 5.136 30.6683C5.136 38.6363 11.088 45.2123 18.96 47.4683Z';
+const $=id=>document.getElementById(id);
+const root=document.documentElement.style;
+// logo masks
+const svgURL=`url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="${INJD}"/></svg>`)}")`;
+for(const el of [$('bm'),$('bg')]){el.style.webkitMaskImage=svgURL;el.style.maskImage=svgURL}
+
+/* ---------- traits from username ---------- */
+function hash(s){let h=2166136261>>>0;for(const ch of s){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)>>>0}return h}
+function mulberry(a){return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+const RAR=[
+  {n:'Rare',w:40,c:['#4fd2ff','#6f8bff','#a8ecff','#4f7dff','#8fb4ff']},
+  {n:'Epic',w:30,c:['#b45cff','#ff5fd2','#7b5cff','#ff9be3','#9d7bff']},
+  {n:'Legendary',w:20,c:['#ffcf5f','#ff7ac6','#ffe39a','#b47bff','#ffb36b']},
+  {n:'Mythic',w:10,c:['#ff4fcf','#ffc94f','#4fffae','#4fcfff','#9f4fff']}];
+const ROLES=['Builder','Trader','Staker','Validator','Degen','Whale','Researcher','Market Maker'];
+const CLASSES=['Ninja','Genesis','Pioneer','Ronin','Sentinel','Architect','Oracle','Vanguard'];
+function traits(u){
+  const r=mulberry(hash(u.toLowerCase()));
+  let x=r()*100,rar=RAR[0];for(const k of RAR){if(x<k.w){rar=k;break}x-=k.w}
+  return{rar,no:1+Math.floor(r()*9999),role:ROLES[Math.floor(r()*ROLES.length)],cls:CLASSES[Math.floor(r()*CLASSES.length)],pow:1000+Math.floor(r()*9000)+(rar.n==='Mythic'?0:0)};
+}
+function setPalette(c){c.forEach((v,i)=>root.setProperty('--h'+(i+1),v))}
+
+/* ---------- tilt / idle animation ---------- */
+let tx=0,ty=0,cx=0,cy=0,hover=false,t0=performance.now();
+const scene=$('scene');
+scene.addEventListener('pointermove',e=>{const b=scene.getBoundingClientRect();tx=(e.clientX-b.left)/b.width-.5;ty=(e.clientY-b.top)/b.height-.5;hover=true});
+scene.addEventListener('pointerleave',()=>{hover=false});
+function loop(now){
+  const t=(now-t0)/1000;
+  let gx=tx,gy=ty;
+  if(!hover){gx=.32*Math.sin(t*.7);gy=.18*Math.cos(t*.55)}
+  cx+=(gx-cx)*.08;cy+=(gy-cy)*.08;
+  root.setProperty('--ry',(cx*34).toFixed(2)+'deg');root.setProperty('--rx',(-cy*26).toFixed(2)+'deg');
+  root.setProperty('--gx',(50+cx*110).toFixed(1)+'%');root.setProperty('--gy',(40+cy*110).toFixed(1)+'%');
+  root.setProperty('--hx',(50+cx*120).toFixed(1)+'%');root.setProperty('--hy',(50+cy*120).toFixed(1)+'%');
+  root.setProperty('--ang',((t*40)%360).toFixed(1)+'deg');
+  $('shadow').style.transform=`translateX(${(-cx*40).toFixed(1)}px) scaleX(${(1-Math.abs(cx)*.25).toFixed(3)})`;
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+// conic angle needs @property for smooth animation; fallback: set on ring directly
+if(!(window.CSS&&CSS.registerProperty)){}else{try{CSS.registerProperty({name:'--ang',syntax:'<angle>',inherits:true,initialValue:'0deg'})}catch(e){}}
+
+/* ---------- avatar ---------- */
+let current=null,imgOK=false,upload=null;
+function loadImg(src){return new Promise((res,rej)=>{const i=new Image();i.crossOrigin='anonymous';i.onload=()=>res(i);i.onerror=rej;i.src=src})}
+function showInitial(u){$('pfp').hidden=true;$('init').hidden=false;$('init').textContent=(u[0]||'?').toUpperCase();imgOK=false}
+
+/* ---------- reveal ---------- */
+function burst(){
+  const b=$('burst');b.innerHTML='';
+  const cols=[...Array(5)].map((_,i)=>getComputedStyle(document.documentElement).getPropertyValue('--h'+(i+1)).trim());
+  for(let i=0;i<34;i++){const s=document.createElement('i');const a=Math.random()*Math.PI*2,d=170+Math.random()*170;
+    s.style.setProperty('--dx',Math.cos(a)*d+'px');s.style.setProperty('--dy',Math.sin(a)*d*1.2+'px');s.style.setProperty('--c',cols[i%5]);s.style.animationDelay=(Math.random()*.15)+'s';b.appendChild(s)}
+  setTimeout(()=>b.innerHTML='',1600);
+}
+function countUp(el,to){const s=performance.now();const f=n=>{const p=Math.min(1,(n-s)/1100);el.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString('en-US');if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+let flipped=false;
+function flipTo(front){
+  const c=$('card');c.classList.add('flipping');
+  root.setProperty('--flip',front?'0deg':'180deg');
+  setTimeout(()=>c.classList.remove('flipping'),1300);
+}
+async function make(u,{silent}={}){
+  u=u.replace(/^@+/,'').trim();
+  if(!/^[A-Za-z0-9_]{1,15}$/.test(u)){$('msg').textContent='Enter a valid X username (letters, numbers, underscore).';return}
+  $('msg').textContent='';const go=$('go');go.disabled=true;go.firstChild.textContent='Printing… ';
+  const tr=traits(u);current={u,tr};
+  let img=null;
+  if(upload){img=upload}else{try{img=await loadImg(`https://unavatar.io/x/${encodeURIComponent(u)}?fallback=false`)}catch(e){img=null}}
+  // flip to back first if already showing a card
+  if(flipped){flipTo(false);await new Promise(r=>setTimeout(r,650))}
+  setPalette(tr.rar.c);
+  $('name').textContent='@'+u;$('no').textContent='№ '+String(tr.no).padStart(4,'0');
+  $('rar').textContent='◆ '+tr.rar.n;$('role').textContent=tr.role;$('cls').textContent=tr.cls;$('pow').textContent='0';
+  if(img){$('pfp').src=img.src;$('pfp').hidden=false;$('init').hidden=true;imgOK=true;current.img=img}
+  else{showInitial(u);current.img=null;if(!silent)$('msg').textContent="Couldn't load that X profile picture, so it shows your initial. You can upload a photo instead."}
+  flipTo(true);flipped=true;setTimeout(burst,380);setTimeout(()=>countUp($('pow'),tr.pow),500);
+  $('actions').classList.add('on');go.disabled=false;go.firstChild.textContent='Create card ';
+  history.replaceState(null,'','?u='+encodeURIComponent(u));
+}
+$('f').addEventListener('submit',e=>{e.preventDefault();upload=null;make($('u').value)});
+$('file').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;const url=URL.createObjectURL(f);try{upload=await loadImg(url)}catch(_){upload=null}
+  const u=$('u').value.trim()||'injective';$('u').value=u.replace(/^@+/,'');make(u);});
+$('again').addEventListener('click',()=>{upload=null;$('u').value='';$('u').focus();flipTo(false);flipped=false;$('actions').classList.remove('on');history.replaceState(null,'',location.pathname)});
+$('share').addEventListener('click',()=>{if(!current)return;const {u,tr}=current;
+  const text=`Just got my Injective card ✦\n\n@${u} · ${tr.rar.n} · ${tr.role}\n\nGet yours 👇`;
+  window.open('https://x.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(location.origin+location.pathname+'?u='+u),'_blank','noopener')});
+
+/* ---------- PNG export (drawn on canvas) ---------- */
+function rr(g,x,y,w,h,r){g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath()}
+function spaced(g,txt,x,y,sp,align){const w=[...txt].reduce((a,ch)=>a+g.measureText(ch).width+sp,0)-sp;let sx=align==='center'?x-w/2:align==='right'?x-w:x;for(const ch of txt){g.fillText(ch,sx,y);sx+=g.measureText(ch).width+sp}}
+async function exportPNG(){
+  if(!current)return;await document.fonts.ready;
+  await Promise.all(['600 64px Inter','500 20px "JetBrains Mono"'].map(f=>document.fonts.load(f)));
+  const {u,tr}=current,C=tr.rar.c,cv=$('cv'),g=cv.getContext('2d'),W=1080,H=1350;
+  g.clearRect(0,0,W,H);g.textBaseline='middle';
+  g.fillStyle='#07070b';g.fillRect(0,0,W,H);
+  let r=g.createRadialGradient(540,640,0,540,640,700);r.addColorStop(0,'rgba(110,96,255,.24)');r.addColorStop(1,'rgba(0,0,0,0)');g.fillStyle=r;g.fillRect(0,0,W,H);
+  const X=200,Y=140,CW=680,CH=952,R=50;
+  // shadow
+  g.save();g.shadowColor='rgba(0,0,0,.6)';g.shadowBlur=60;g.shadowOffsetY=30;rr(g,X,Y,CW,CH,R);g.fillStyle='#0c0b16';g.fill();g.restore();
+  g.save();rr(g,X,Y,CW,CH,R);g.clip();
+  let bgG=g.createLinearGradient(X,Y,X+CW*.5,Y+CH);bgG.addColorStop(0,'#1a1735');bgG.addColorStop(.48,'#0c0b16');bgG.addColorStop(1,'#141130');g.fillStyle=bgG;g.fillRect(X,Y,CW,CH);
+  const rain=(a)=>{const lg=g.createLinearGradient(X,Y,X+CW,Y+CH);[...C,C[0]].forEach((c,i,arr)=>lg.addColorStop(i/(arr.length-1),c));return lg};
+  // lattice foil
+  g.globalAlpha=.30;g.strokeStyle=rain();g.lineWidth=1.4;g.beginPath();
+  for(let k=-CH;k<CW+CH;k+=16){g.moveTo(X+k,Y);g.lineTo(X+k+CH,Y+CH);g.moveTo(X+k,Y+CH);g.lineTo(X+k+CH,Y)}g.stroke();g.globalAlpha=1;
+  // big faint mark
+  const P=new Path2D(INJD);g.save();g.globalAlpha=.14;const ms=CW*.94/48;g.translate(X+CW*.03,Y+CH*.07);g.scale(ms,ms);g.fillStyle=(()=>{const lg=g.createLinearGradient(0,0,48,48);C.forEach((c,i)=>lg.addColorStop(i/(C.length-1),c));return lg})();g.fill(P);g.restore();
+  // frame
+  rr(g,X+27,Y+27,CW-54,CH-54,30);g.strokeStyle='rgba(255,255,255,.13)';g.lineWidth=1.5;g.stroke();
+  // corners
+  g.font='500 20px "JetBrains Mono"';g.fillStyle='rgba(255,255,255,.6)';
+  g.save();g.translate(X+54,Y+59-15);g.scale(30/48,30/48);g.fillStyle='#fff';g.fill(P);g.restore();
+  spaced(g,'INJECTIVE',X+96,Y+60,4,'left');spaced(g,'№ '+String(tr.no).padStart(4,'0'),X+CW-54,Y+60,4,'right');
+  spaced(g,'BUILT FOR FINANCE',X+54,Y+CH-52,4,'left');spaced(g,'2026',X+CW-54,Y+CH-52,4,'right');
+  // avatar ring
+  const ax=X+CW/2,ay=Y+CH*.15+CW*.23,ar=CW*.23;
+  g.save();g.shadowColor='rgba(140,125,255,.6)';g.shadowBlur=40;
+  const cg=g.createConicGradient?g.createConicGradient(-Math.PI/2,ax,ay):rain();
+  if(g.createConicGradient){[...C,C[0]].forEach((c,i,arr)=>cg.addColorStop(i/(arr.length-1),c))}
+  g.fillStyle=cg;g.beginPath();g.arc(ax,ay,ar*1.07,0,7);g.fill();g.restore();
+  g.fillStyle='#0c0b16';g.beginPath();g.arc(ax,ay,ar*1.035,0,7);g.fill();
+  g.save();g.beginPath();g.arc(ax,ay,ar,0,7);g.clip();
+  if(current.img){const im=current.img,s=Math.max(2*ar/im.naturalWidth,2*ar/im.naturalHeight);const w=im.naturalWidth*s,h=im.naturalHeight*s;g.drawImage(im,ax-w/2,ay-h/2,w,h)}
+  else{let ig=g.createLinearGradient(ax-ar,ay-ar,ax+ar,ay+ar);ig.addColorStop(0,'#3b2f9e');ig.addColorStop(1,'#15132a');g.fillStyle=ig;g.fillRect(ax-ar,ay-ar,2*ar,2*ar);g.fillStyle='#fff';g.font='600 120px Inter';g.textAlign='center';g.fillText(u[0].toUpperCase(),ax,ay+6);g.textAlign='left'}
+  g.restore();
+  // name
+  let fs=58;g.font=`600 ${fs}px Inter`;while(g.measureText('@'+u).width>CW-90&&fs>30){fs-=2;g.font=`600 ${fs}px Inter`}
+  g.fillStyle='#fff';g.textAlign='center';g.fillText('@'+u,ax,Y+CH*.585);g.textAlign='left';
+  // rarity pill
+  g.font='600 20px "JetBrains Mono"';const label='◆ '+tr.rar.n.toUpperCase();const lw=[...label].reduce((a,ch)=>a+g.measureText(ch).width+4,0)+44;
+  const py=Y+CH*.665;let pg=g.createLinearGradient(ax-lw/2,0,ax+lw/2,0);C.forEach((c,i)=>pg.addColorStop(i/(C.length-1),c));
+  rr(g,ax-lw/2,py-22,lw,44,22);g.fillStyle=pg;g.fill();g.fillStyle='#0a0a10';spaced(g,label,ax,py+1,4,'center');
+  // stats
+  const sy=Y+CH*.74,sh=CH*.12,sx=X+CW*.08,sw=CW*.84;
+  g.strokeStyle='rgba(255,255,255,.12)';g.lineWidth=1.5;g.beginPath();g.moveTo(sx,sy);g.lineTo(sx+sw,sy);g.moveTo(sx,sy+sh);g.lineTo(sx+sw,sy+sh);g.moveTo(sx+sw/3,sy);g.lineTo(sx+sw/3,sy+sh);g.moveTo(sx+2*sw/3,sy);g.lineTo(sx+2*sw/3,sy+sh);g.stroke();
+  [['ROLE',tr.role],['POWER',tr.pow.toLocaleString('en-US')],['CLASS',tr.cls]].forEach(([k,v],i)=>{const cxp=sx+sw/6+i*sw/3;
+    g.font='500 17px "JetBrains Mono"';g.fillStyle='rgba(255,255,255,.5)';spaced(g,k,cxp,sy+sh*.34,4,'center');
+    let f2=30;g.font=`600 ${f2}px Inter`;while(g.measureText(v).width>sw/3-20&&f2>18){f2-=1;g.font=`600 ${f2}px Inter`}
+    g.fillStyle='#fff';g.textAlign='center';g.fillText(v,cxp,sy+sh*.67);g.textAlign='left'});
+  // sheen
+  let sg=g.createLinearGradient(X,Y,X+CW,Y+CH);sg.addColorStop(0,'rgba(255,255,255,0)');sg.addColorStop(.40,'rgba(255,255,255,0)');sg.addColorStop(.47,'rgba(255,255,255,.10)');sg.addColorStop(.5,'rgba(255,255,255,.16)');sg.addColorStop(.53,'rgba(255,255,255,.10)');sg.addColorStop(.6,'rgba(255,255,255,0)');sg.addColorStop(1,'rgba(255,255,255,0)');
+  g.fillStyle=sg;g.fillRect(X,Y,CW,CH);
+  g.restore();
+  rr(g,X,Y,CW,CH,R);g.strokeStyle='rgba(255,255,255,.14)';g.lineWidth=1.5;g.stroke();
+  // watermark
+  g.font='500 22px Inter';g.fillStyle='rgba(255,255,255,.42)';g.textAlign='right';g.fillText('@reebmughal',W-60,H-50);g.textAlign='left';
+  return cv;
+}
+$('dl').addEventListener('click',async()=>{const cv=await exportPNG();if(!cv)return;
+  try{cv.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=`injective-card-${current.u}.png`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)},'image/png')}
+  catch(e){$('msg').textContent='Download blocked by the browser. Take a screenshot instead.'}});
+window.exportPNG=exportPNG;window.make=make;
+
+/* ---------- deep link ?u= ---------- */
+const q=new URLSearchParams(location.search).get('u');
+if(q){$('u').value=q;setTimeout(()=>make(q,{silent:true}),500)}
+</script>
+</body>
+</html>
